@@ -1,6 +1,6 @@
 # mpd
 
-Music Player Daemon (MPD) is a flexible, powerful, server-side application for playing music. Through plugins and libraries it can play a variety of sound files while being controlled by its network protocol.A minimalist command line interface to MPD.
+Music Player Daemon (MPD) is a flexible, powerful, server-side application for playing music. Through plugins and libraries it can play a variety of sound files while being controlled by its network protocol.
 
 This repo is intended for [Volumio music player](https://volumio.com/) MPD enhancements for armfh.
 
