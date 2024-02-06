@@ -46,6 +46,10 @@ sudo apt install libsndio-dev libopenmpt-dev libpcre2-dev libpipewire-0.2-dev
 
 sudo apt install -t buster-backports libfmt-dev liburing-dev libsystemd-dev liburing1
 
+### Additional backport packages:
+
+sudo apt install -t buster-backports meson debhelper
+
 ### Missing headers:
 
 copy libgme.pc file from sources to /usr/lib/pkgconfig
