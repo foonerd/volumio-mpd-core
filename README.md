@@ -17,38 +17,39 @@ This repo is intended for [Volumio music player](https://volumio.com/) MPD enhan
 
 This is not a complete guide, only set of essential instructions for this build:
 
+### Update your locale by appending exports:
+
+**nano ~/.bashrc**
+
+```
+# Setting for the new UTF-8 terminal support in Volumio
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+```
+```
+source ~/.bashrc
+```
 ### Update repos:
 
 **sudo nano /etc/apt/sources.list**
 
 ```
 deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
-deb http://ftp.uk.debian.org/debian buster-backports main
 ```
-
-sudo apt update
-
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131
 
 sudo apt update
 
 ### Install essential build packages:
 
-sudo apt-get install build-essential fakeroot devscripts
+sudo apt install build-essential fakeroot devscripts
 
 ### Install build required packages:
 
-sudo apt install libsndio-dev libopenmpt-dev libpcre2-dev libpipewire-0.2-dev
+sudo apt install meson debhelper cmake 
 
-### Install backport packages:
+### Install library packages:
 
-sudo apt install -t buster-backports libfmt-dev liburing-dev libsystemd-dev liburing1
-
-### Additional backport packages:
-
-sudo apt install -t buster-backports meson debhelper
+sudo apt install libsndio-dev libopenmpt-dev libpcre2-dev libpipewire-0.2-dev libfmt-dev libsystemd-dev libavfilter-dev
 
 ### Missing headers:
 
@@ -68,16 +69,23 @@ debuild -uc -us
 
 ---
 
-### Package installation:
+## x86 has unmet dependencies on dephelper and meson:
 
-The mpd_0.23.1x-1_armhf.deb packages relies on `liburing1` and as such is an installation prerequisite. Two options for your choosing:
+**sudo nano /etc/apt/sources.list**
 
-#### Install from backports
+```
+deb-src http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi
+deb http://ftp.uk.debian.org/debian buster-backports main
+```
 
-sudo apt install -t buster-backports liburing1
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
 
-#### Download from this [repo /packages/static](https://github.com/foonerd/volumio3-mpd/blob/main/packages/static/liburing1_0.7-3~bpo10%2B1_armhf.deb "liburing1_0.7-3~bpo10+1_armhf.deb") and install
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131
 
-sudo apt install ./liburing1_0.7-3~bpo10+1_armhf.deb
+sudo apt update
+
+Additional backport packages:
+
+sudo apt install -t buster-backports debhelper meson
 
 ---
