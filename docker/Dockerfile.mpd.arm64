@@ -1,0 +1,84 @@
+FROM arm64v8/debian:bookworm
+
+# Add backports repository to apt sources
+RUN echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/bookworm-backports.list
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc-arm-linux-gnueabihf \
+    g++-arm-linux-gnueabihf \
+    devscripts \
+    fakeroot \
+    debhelper \
+    meson \
+    ninja-build \
+    dh-python \
+    libadplug-dev \
+    libao-dev \
+    libasound2-dev \
+    libavahi-client-dev \
+    libavcodec-dev \
+    libavfilter-dev \
+    libavformat-dev \
+    libbz2-dev \
+    libcdio-paranoia-dev \
+    libchromaprint-dev \
+    libcurl4-gnutls-dev \
+    libexpat1-dev \
+    libfaad-dev \
+    libflac-dev \
+    libfluidsynth-dev \
+    libfmt-dev \
+    libgme-dev \
+    libicu-dev \
+    libid3tag0-dev \
+    libiso9660-dev \
+    libjack-jackd2-dev \
+    libmad0-dev \
+    libmikmod-dev \
+    libmms-dev \
+    libmodplug-dev \
+    libmp3lame-dev \
+    libmpcdec-dev \
+    libmpdclient-dev \
+    libmpg123-dev \
+    libnfs-dev \
+    libogg-dev \
+    libopenal-dev \
+    libopenmpt-dev \
+    libopus-dev \
+    libpcre2-dev \
+    libpipewire-0.3-dev \
+    libpulse-dev \
+    libresid-builder-dev \
+    libsamplerate0-dev \
+    libshout3-dev \
+    libsidplayfp-dev \
+    libsidutils-dev \
+    libsmbclient-dev \
+    libsndfile1-dev \
+    libsoxr-dev \
+    libsqlite3-dev \
+    libsystemd-dev \
+    libupnp-dev \
+    liburing-dev \
+    libvorbis-dev \
+    libwavpack-dev \
+    libwildmidi-dev \
+    libyajl-dev \
+    libzzip-dev \
+    systemd-dev \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    libgtest-dev \
+    ca-certificates \
+    wget && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN sed -i "s/doit(\"cp\", '--reflink=auto', \"-a\"/doit(\"cp\", '--reflink=auto', \"-a\", \"--no-preserve=ownership\"/g" /usr/bin/dh_install
+RUN sed -i "s/xargs(\\\@srcs, \"cp\", '--reflink=auto', \"-a\"/xargs(\\\@srcs, \"cp\", '--reflink=auto', \"-a\", \"--no-preserve=ownership\"/g" /usr/bin/dh_install
+
+WORKDIR /build
