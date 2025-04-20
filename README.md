@@ -1,4 +1,4 @@
-# Volumio MPD Core - Custom MPD 0.24.3 Build for Volumio on Debian Bookworm
+# Volumio MPD Core - Custom MPD 0.24.3
 
 ## Overview
 This project provides a clean, reproducible build environment for Music Player Daemon (MPD) version 0.24.3, tailored for use within Volumio OS based on Debian 12 (Bookworm). It includes:
@@ -8,7 +8,7 @@ This project provides a clean, reproducible build environment for Music Player D
 - Custom configuration aligned with Volumio architecture.
 - Versioning and feature decisions optimized for low-latency audio output environments.
 
-## Motivation
+## Improvements
 The default MPD version in Debian Bookworm is 0.23.12. This build updates to 0.24.3 to gain:
 
 - WMA support via FFmpeg.

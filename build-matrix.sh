@@ -14,15 +14,14 @@ for arg in "$@"; do
   esac
 done
 
-# Clean and extract source
-echo ""
-echo "====================================="
-echo ">> Preparing clean source directory"
-echo "====================================="
-./scripts/extract.sh
-
 # Run build per architecture
 for ARCH in "${ARCHS[@]}"; do
+  # Clean and extract source
+  echo ""
+  echo "====================================="
+  echo ">> Preparing clean source directory"
+  echo "====================================="
+  ./scripts/extract.sh
   echo ""
   echo "====================================="
   echo ">> Building for architecture: $ARCH"

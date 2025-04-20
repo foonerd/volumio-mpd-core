@@ -62,7 +62,7 @@ if [[ "$ARCH" == "armv6" ]]; then
   docker run --rm --platform=$PLATFORM -v "$PWD":/build -w /build $IMAGE_TAG bash -c "\
     cd build/$COMPONENT/source && \
     export CFLAGS='-O2 -march=armv6 -mfpu=vfp -mfloat-abi=hard -marm' && \
-    export CXXFLAGS='-O1 -Wno-psabi' && \
+    export CXXFLAGS='-O1 -Wno-psabi -march=armv6 -mfpu=vfp -mfloat-abi=hard -marm' && \
     export DEB_BUILD_MAINT_OPTIONS='hardening=+all optimize=-lto' && \
     dpkg-buildpackage -us -uc -b"
 else
