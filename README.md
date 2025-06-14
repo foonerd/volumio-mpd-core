@@ -1,7 +1,7 @@
-# Volumio MPD Core - Custom MPD 0.24.3
+# Volumio MPD Core - Custom MPD 0.24.5
 
 ## Overview
-This project provides a clean, reproducible build environment for Music Player Daemon (MPD) version 0.24.3, tailored for use within Volumio OS based on Debian 12 (Bookworm). It includes:
+This project provides a clean, reproducible build environment for Music Player Daemon (MPD) version 0.24.5, tailored for use within Volumio OS based on Debian 12 (Bookworm). It includes:
 
 - Debian-compliant packaging.
 - Multi-architecture Docker-based cross-build setup.
@@ -9,13 +9,14 @@ This project provides a clean, reproducible build environment for Music Player D
 - Versioning and feature decisions optimized for low-latency audio output environments.
 
 ## Improvements
-The default MPD version in Debian Bookworm is 0.23.12. This build updates to 0.24.3 to gain:
+The default MPD version in Debian Bookworm is 0.23.12. This build updates to 0.24.5 to gain:
 
 - WMA support via FFmpeg.
 - Improved DSD and channel conversion.
 - Stability improvements in SHOUTcast and OSS outputs.
 - Modernized JSON handling (nlohmann_json replaces yajl).
 - Removed obsolete plugins (e.g., SoundCloud).
+- Use libid3tag to parse stream tags
 
 These changes improve format compatibility, system integration, and simplify maintenance in Volumio deployments.
 
@@ -31,8 +32,8 @@ volumio-mpd-core/
 │   ├── Dockerfile.mpd.amd64
 │   └── run-docker-mpd.sh          # Core build logic per-arch
 ├── package-sources/
-│   ├── mpd_0.24.3.orig.tar.xz
-│   └── mpd_0.24.3-1volumio1.debian.tar.xz
+│   ├── mpd_0.24.5.orig.tar.xz
+│   └── mpd_0.24.5-1volumio1.debian.tar.xz
 ├── scripts/
 │   └── extract.sh                 # Prepares clean build directory
 ├── out/                           # Output directory for .deb packages
@@ -82,7 +83,7 @@ Renamed with Volumio-friendly suffixes:
 - io_uring enabled for efficient I/O.
 
 ### Meson Build Flags
-- All `debian/rules` logic retained from Bookworm backport and adjusted for 0.24.3.
+- All `debian/rules` logic retained from Bookworm backport and adjusted for 0.24.5.
 - Removed obsolete or deprecated flags: `yajl`, `soundcloud`.
 
 ## Cue Sheet Improvements
