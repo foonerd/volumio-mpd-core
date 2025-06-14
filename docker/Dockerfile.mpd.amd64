@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y \
     devscripts \
     fakeroot \
     debhelper \
-    meson \
     ninja-build \
     dh-python \
     libadplug-dev \
@@ -74,9 +73,12 @@ RUN apt-get update && apt-get install -y \
     python3-wheel \
     libgtest-dev \
     ca-certificates \
-    wget && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    wget
 
+# Install Meson >= 1.2.0 from backports to satisfy dpkg-checkbuilddeps
+RUN apt-get update && apt-get -t bookworm-backports install -y meson
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Patch dh_install for reproducible builds
 RUN sed -i "s/doit(\"cp\", '--reflink=auto', \"-a\"/doit(\"cp\", '--reflink=auto', \"-a\", \"--no-preserve=ownership\"/g" /usr/bin/dh_install
 RUN sed -i "s/xargs(\\\@srcs, \"cp\", '--reflink=auto', \"-a\"/xargs(\\\@srcs, \"cp\", '--reflink=auto', \"-a\", \"--no-preserve=ownership\"/g" /usr/bin/dh_install
 
