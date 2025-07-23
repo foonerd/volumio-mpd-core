@@ -33,7 +33,7 @@ volumio-mpd-core/
 │   └── run-docker-mpd.sh          # Core build logic per-arch
 ├── package-sources/
 │   ├── mpd_0.24.5.orig.tar.xz
-│   └── mpd_0.24.5-1volumio1.debian.tar.xz
+│   └── mpd_0.24.5-2volumio1.debian.tar.xz
 ├── scripts/
 │   └── extract.sh                 # Prepares clean build directory
 ├── out/                           # Output directory for .deb packages

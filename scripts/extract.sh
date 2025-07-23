@@ -9,7 +9,7 @@ fi
 
 # Set the paths for mpd source and debian tarballs
 ORIG_TAR_PATH="package-sources/mpd_0.24.5.orig.tar.xz"
-DEBIAN_TAR_PATH="package-sources/mpd_0.24.5-1volumio1.debian.tar.xz"
+DEBIAN_TAR_PATH="package-sources/mpd_0.24.5-2volumio1.debian.tar.xz"
 
 # Ensure both tarballs exist
 if [[ ! -f "$ORIG_TAR_PATH" ]]; then
