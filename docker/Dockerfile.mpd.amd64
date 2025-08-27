@@ -12,9 +12,17 @@ RUN apt-get update && apt-get install -y \
     debhelper \
     ninja-build \
     dh-python \
+    cmake \
+    audiofile-tools \
+    ca-certificates \
+    cuetools \
+    lame \
+    libcue2 \
     libadplug-dev \
     libao-dev \
     libasound2-dev \
+    libaudiofile1 \
+    libaudiofile-dev \
     libavahi-client-dev \
     libavcodec-dev \
     libavfilter-dev \
@@ -22,6 +30,7 @@ RUN apt-get update && apt-get install -y \
     libbz2-dev \
     libcdio-paranoia-dev \
     libchromaprint-dev \
+    libcue-dev \
     libcurl4-gnutls-dev \
     libexpat1-dev \
     libfaad-dev \
@@ -29,6 +38,7 @@ RUN apt-get update && apt-get install -y \
     libfluidsynth-dev \
     libfmt-dev \
     libgme-dev \
+    libgtest-dev \
     libicu-dev \
     libid3tag0-dev \
     libiso9660-dev \
@@ -71,9 +81,9 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-setuptools \
     python3-wheel \
-    libgtest-dev \
-    ca-certificates \
-    wget
+    unzip \
+    wget \
+    zip
 
 # Install Meson >= 1.2.0 from backports to satisfy dpkg-checkbuilddeps
 RUN apt-get update && apt-get -t bookworm-backports install -y meson

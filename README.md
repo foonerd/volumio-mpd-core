@@ -9,8 +9,9 @@ This project provides a clean, reproducible build environment for Music Player D
 - Versioning and feature decisions optimized for low-latency audio output environments.
 
 ## Improvements
-The default MPD version in Debian Bookworm is 0.23.12. This build updates to 0.24.5 to gain:
+The default MPD version in Debian Bookworm is 0.23.12. This build updates to 0.24.6 to gain:
 
+- Decoder FFmpeg handlers and mpg123 tags fixes.
 - WMA support via FFmpeg.
 - Improved DSD and channel conversion.
 - Stability improvements in SHOUTcast and OSS outputs.
@@ -32,8 +33,8 @@ volumio-mpd-core/
 │   ├── Dockerfile.mpd.amd64
 │   └── run-docker-mpd.sh          # Core build logic per-arch
 ├── package-sources/
-│   ├── mpd_0.24.5.orig.tar.xz
-│   └── mpd_0.24.5-2volumio1.debian.tar.xz
+│   ├── mpd_0.24.6.orig.tar.xz
+│   └── mpd_0.24.6-1volumio1.debian.tar.xz
 ├── scripts/
 │   └── extract.sh                 # Prepares clean build directory
 ├── out/                           # Output directory for .deb packages
